@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+cardwise-question-system.md
+cardwise-page-guide.md
+cardwise-design-system.jsx

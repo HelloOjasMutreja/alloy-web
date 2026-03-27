@@ -100,7 +100,8 @@ const getNextScreen = (state: QuestionnaireState): ScreenId => {
     case 'entry':
       if (state.intent === 'FIRST') return 'goal';
       if (state.intent === 'AUDIT') return 'card-search';
-      return 'priority';
+      if (state.intent === 'OPTIMISE') return 'priority';
+      return 'entry';
     case 'goal':
       return 'spend-categories';
     case 'card-search':
@@ -137,6 +138,7 @@ function reducer(state: QuestionnaireState, action: Action): QuestionnaireState 
         tenure: null,
         priorityRanking: [],
         currentCards: [],
+        spendCategories: [],
         travelType: null,
         monthlySpendBracket: null,
         incomeBracket: null,
@@ -177,6 +179,9 @@ function reducer(state: QuestionnaireState, action: Action): QuestionnaireState 
     case 'SET_INCOME_BRACKET':
       return { ...state, incomeBracket: action.payload };
     case 'ADVANCE': {
+      if (state.currentScreen !== 'loading' && !getCanAdvance(state)) {
+        return state;
+      }
       const next = getNextScreen(state);
       if (next === state.currentScreen) return state;
       return {
@@ -272,7 +277,10 @@ export function useQuestionnaireState(): QuestionnaireActions {
     canAdvance,
     setIntent: (intent) => dispatch({ type: 'SET_INTENT', payload: intent }),
     setGoal: (goal) => dispatch({ type: 'SET_GOAL', payload: goal }),
-    setCurrentCard: (cardId, _cardName) => dispatch({ type: 'SET_CURRENT_CARD', payload: cardId }),
+    setCurrentCard: (cardId, cardName) => {
+      void cardName;
+      dispatch({ type: 'SET_CURRENT_CARD', payload: cardId });
+    },
     setTenure: (tenure) => dispatch({ type: 'SET_TENURE', payload: tenure }),
     setPriorityRanking: (ranking) => dispatch({ type: 'SET_PRIORITY_RANKING', payload: ranking }),
     addExistingCard: (cardId) => dispatch({ type: 'ADD_EXISTING_CARD', payload: cardId }),
