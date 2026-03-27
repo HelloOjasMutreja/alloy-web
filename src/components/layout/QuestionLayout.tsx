@@ -46,11 +46,8 @@ export function QuestionLayout({
               className={styles.continueWrap}
               initial={{ opacity: 0, y: 7 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -4 }}
-              transition={{
-                opacity: { duration: 0.28, ease: 'easeOut' },
-                y: { duration: 0.16, ease: 'easeIn' },
-              }}
+              exit={{ opacity: 0, y: -4, transition: { duration: 0.16, ease: 'easeIn' } }}
+              transition={{ duration: 0.28, ease: 'easeOut' }}
             >
               <Button
                 variant="primary"
