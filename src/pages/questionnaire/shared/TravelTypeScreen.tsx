@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { QuestionLayout } from '../../../components/layout';
 import { Tile } from '../../../components/ui';
-import { useQuestionnaireContext } from '../../../context/QuestionnaireContext';
+import { useQuestionnaireContext } from '../../../context/useQuestionnaireContext';
 import type { TravelType } from '../../../types/questionnaire';
 import styles from './TravelTypeScreen.module.css';
 
@@ -46,4 +46,5 @@ export default function TravelTypeScreen() {
     </QuestionLayout>
   );
 }
+
 

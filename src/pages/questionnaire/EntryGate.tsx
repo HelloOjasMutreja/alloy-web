@@ -1,6 +1,6 @@
 import { QuestionLayout } from '../../components/layout';
 import { Tile } from '../../components/ui';
-import { useQuestionnaireContext } from '../../context/QuestionnaireContext';
+import { useQuestionnaireContext } from '../../context/useQuestionnaireContext';
 import type { Intent } from '../../types/questionnaire';
 import styles from './EntryGate.module.css';
 
@@ -50,4 +50,5 @@ export default function EntryGate() {
     </QuestionLayout>
   );
 }
+
 

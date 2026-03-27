@@ -1,6 +1,6 @@
 import { QuestionLayout } from '../../../components/layout';
 import { Tile } from '../../../components/ui';
-import { useQuestionnaireContext } from '../../../context/QuestionnaireContext';
+import { useQuestionnaireContext } from '../../../context/useQuestionnaireContext';
 import type { IncomeBracket } from '../../../types/questionnaire';
 import styles from './IncomeBracketScreen.module.css';
 
@@ -40,4 +40,5 @@ export default function IncomeBracketScreen() {
     </QuestionLayout>
   );
 }
+
 

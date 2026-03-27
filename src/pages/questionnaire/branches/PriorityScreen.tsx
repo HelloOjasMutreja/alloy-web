@@ -1,6 +1,6 @@
 import { QuestionLayout } from '../../../components/layout';
 import { Tile } from '../../../components/ui';
-import { useQuestionnaireContext } from '../../../context/QuestionnaireContext';
+import { useQuestionnaireContext } from '../../../context/useQuestionnaireContext';
 import styles from './PriorityScreen.module.css';
 
 const iconProps = {
@@ -117,4 +117,5 @@ export default function PriorityScreen() {
     </QuestionLayout>
   );
 }
+
 

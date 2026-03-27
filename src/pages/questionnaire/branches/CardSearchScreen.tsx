@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { QuestionLayout } from '../../../components/layout';
 import { SearchInput } from '../../../components/ui';
-import { useQuestionnaireContext } from '../../../context/QuestionnaireContext';
+import { useQuestionnaireContext } from '../../../context/useQuestionnaireContext';
 import { useCardSearch } from '../../../hooks/useCardSearch';
 import styles from './CardSearchScreen.module.css';
 
@@ -54,4 +54,5 @@ export default function CardSearchScreen() {
     </QuestionLayout>
   );
 }
+
 

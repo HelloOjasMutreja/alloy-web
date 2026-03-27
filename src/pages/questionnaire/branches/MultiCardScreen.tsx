@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { QuestionLayout } from '../../../components/layout';
 import { SearchInput } from '../../../components/ui';
-import { useQuestionnaireContext } from '../../../context/QuestionnaireContext';
+import { useQuestionnaireContext } from '../../../context/useQuestionnaireContext';
 import { useCardSearch } from '../../../hooks/useCardSearch';
 import styles from './MultiCardScreen.module.css';
 
@@ -56,4 +56,5 @@ export default function MultiCardScreen() {
     </QuestionLayout>
   );
 }
+
 

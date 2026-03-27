@@ -1,10 +1,8 @@
-import { createContext, useContext, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import {
-  type QuestionnaireActions,
   useQuestionnaireState,
 } from '../hooks/useQuestionnaireState';
-
-const QuestionnaireContext = createContext<QuestionnaireActions | null>(null);
+import { QuestionnaireContext } from './QuestionnaireContextValue';
 
 interface QuestionnaireProviderProps {
   children: ReactNode;
@@ -18,13 +16,5 @@ export function QuestionnaireProvider({ children }: QuestionnaireProviderProps) 
       {children}
     </QuestionnaireContext.Provider>
   );
-}
-
-export function useQuestionnaireContext(): QuestionnaireActions {
-  const context = useContext(QuestionnaireContext);
-  if (!context) {
-    throw new Error('useQuestionnaireContext must be used within a QuestionnaireProvider');
-  }
-  return context;
 }
 

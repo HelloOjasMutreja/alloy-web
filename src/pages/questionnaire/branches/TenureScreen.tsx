@@ -1,6 +1,6 @@
 import { QuestionLayout } from '../../../components/layout';
 import { Pill } from '../../../components/ui';
-import { useQuestionnaireContext } from '../../../context/QuestionnaireContext';
+import { useQuestionnaireContext } from '../../../context/useQuestionnaireContext';
 import type { Tenure } from '../../../types/questionnaire';
 import styles from './TenureScreen.module.css';
 
@@ -35,4 +35,5 @@ export default function TenureScreen() {
     </QuestionLayout>
   );
 }
+
 

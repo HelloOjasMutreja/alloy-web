@@ -1,6 +1,6 @@
 import { QuestionLayout } from '../../../components/layout';
 import { Tile } from '../../../components/ui';
-import { useQuestionnaireContext } from '../../../context/QuestionnaireContext';
+import { useQuestionnaireContext } from '../../../context/useQuestionnaireContext';
 import type { SpendCategory } from '../../../types/questionnaire';
 import styles from './SpendCategoriesScreen.module.css';
 
@@ -119,4 +119,5 @@ export default function SpendCategoriesScreen() {
     </QuestionLayout>
   );
 }
+
 

@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import type { ReactNode } from 'react';
+import { useContext, type ReactNode } from 'react';
+import { FlowTransitionContext } from '../../context/FlowTransitionContext';
 import { useAnimationEntry } from '../../hooks/useAnimationEntry';
 import { Button } from '../ui';
 import { Nav } from './Nav';
@@ -16,6 +17,7 @@ interface QuestionLayoutProps {
   isLoading?: boolean;
   showBack?: boolean;
   showProgress?: boolean;
+  exiting?: boolean;
 }
 
 export function QuestionLayout({
@@ -29,11 +31,14 @@ export function QuestionLayout({
   isLoading = false,
   showBack = true,
   showProgress = true,
+  exiting = false,
 }: QuestionLayoutProps) {
   const { style } = useAnimationEntry(0);
+  const isFlowExiting = useContext(FlowTransitionContext);
+  const shouldExit = exiting || isFlowExiting;
 
   return (
-    <div className={styles.page}>
+    <div className={[styles.page, shouldExit ? styles.exiting : ''].filter(Boolean).join(' ')}>
       <Nav mode="flow" onBack={onBack} progress={progress} showBack={showBack} showProgress={showProgress} />
 
       <main className={styles.content}>
