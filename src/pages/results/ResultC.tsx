@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Nav } from '../../components/layout';
+import { formatRupee } from '../../lib/format';
 import type { RecommendedCard, RecommendationResponse } from '../../types/results';
 import styles from './ResultC.module.css';
 
@@ -9,14 +10,12 @@ interface ResultCProps {
 
 const coveredCategories = ['Dining', 'Groceries', 'Shopping'];
 const gapCategories = ['Travel', 'Utilities', 'Fuel'];
-const formatter = new Intl.NumberFormat('en-IN');
-
 function feeNote(card: RecommendedCard) {
   if (card.annual_fee === 0) {
     return 'No annual fee';
   }
   const monthlyBreakEven = Math.round(card.fee_waiver_spend / 12 / 1000);
-  return `₹${formatter.format(card.annual_fee)}/yr annual fee · pays for itself above ₹${monthlyBreakEven}K/mo`;
+  return `${formatRupee(card.annual_fee)}/yr annual fee · pays for itself above ₹${monthlyBreakEven}K/mo`;
 }
 
 function CardResult({ card }: { card: RecommendedCard }) {
@@ -29,7 +28,7 @@ function CardResult({ card }: { card: RecommendedCard }) {
         </div>
         <div>
           <div className={styles.netLabel}>NET VALUE</div>
-          <div className={styles.netValue}>₹{formatter.format(card.net_annual_value)}</div>
+          <div className={styles.netValue}>{formatRupee(card.net_annual_value)}</div>
         </div>
       </div>
       <hr className={styles.divider} />

@@ -34,10 +34,57 @@
   font-size: var(--text-md);
   line-height: 1;
   cursor: pointer;
-  padding: 0;
+  padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .clearButton:hover {
   color: var(--ink-100);
+}
+
+.clearButton:focus-visible {
+  outline: 2px solid var(--ink-100);
+  outline-offset: 2px;
+}
+
+.manualWrap {
+  margin-top: var(--space-3);
+  display: flex;
+  gap: var(--space-3);
+}
+
+.manualInput {
+  flex: 1;
+  min-height: 44px;
+  border: 0.5px solid var(--border-rest);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  background: var(--surface-card);
+  color: var(--ink-100);
+}
+
+.manualInput:focus-visible {
+  outline: 2px solid var(--ink-100);
+  outline-offset: 2px;
+}
+
+.manualButton {
+  min-height: 44px;
+  border: 0.5px solid var(--border-hover);
+  border-radius: var(--radius-md);
+  background: transparent;
+  padding: 0 var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--ink-100);
+  cursor: pointer;
+}
+
+.manualButton:focus-visible {
+  outline: 2px solid var(--ink-100);
+  outline-offset: 2px;
 }
 

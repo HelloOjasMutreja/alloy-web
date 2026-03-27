@@ -81,6 +81,7 @@
   display: flex;
   justify-content: space-between;
   gap: var(--space-4);
+  overflow-wrap: anywhere;
 }
 
 .bank {

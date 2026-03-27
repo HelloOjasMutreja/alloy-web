@@ -10,6 +10,8 @@ export type IncomeBracket = 'I1' | 'I2' | 'I3' | 'I4' | 'I5';
 export interface QuestionnaireState {
   intent: Intent | null;
   currentCards: string[];
+  manualCardEntry: boolean;
+  manualCardName: string | null;
   tenure: Tenure | null;
   goal: Goal | null;
   priorityRanking: string[];

@@ -45,3 +45,9 @@
 .backButton:hover {
   opacity: 0.6;
 }
+
+.backButton:focus-visible {
+  outline: 2px solid var(--ink-100);
+  outline-offset: 2px;
+  opacity: 0.6;
+}

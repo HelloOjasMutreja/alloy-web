@@ -43,12 +43,23 @@ export function Tile(props: TileProps) {
     .filter(Boolean)
     .join(' ');
 
+  const triggerClick = () => {
+    onClick?.();
+  };
+
   return (
     <button
       type="button"
-      onClick={onClick}
+      onClick={triggerClick}
+      aria-selected={selected}
       className={classNames}
       style={{ animationDelay: `${animationDelay}ms` }}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          triggerClick();
+        }
+      }}
     >
       {(variant === 'icon' || variant === 'ranked') && 'icon' in props ? (
         <div className={styles.iconWrap}>{props.icon}</div>

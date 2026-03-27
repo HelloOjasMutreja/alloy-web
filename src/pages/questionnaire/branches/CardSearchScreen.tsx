@@ -7,8 +7,10 @@ import styles from './CardSearchScreen.module.css';
 
 export default function CardSearchScreen() {
   const { state, progress, canAdvance, setCurrentCard, removeExistingCard, advance, back } = useQuestionnaireContext();
-  const { query, setQuery, results, loading } = useCardSearch();
+  const { query, setQuery, results, loading, searchError } = useCardSearch();
   const [selectedCardName, setSelectedCardName] = useState('');
+  const [showManualInput, setShowManualInput] = useState(false);
+  const [manualCardName, setManualCardName] = useState('');
 
   return (
     <QuestionLayout
@@ -25,18 +27,49 @@ export default function CardSearchScreen() {
         onChange={setQuery}
         results={results}
         loading={loading}
+        showError={searchError}
         placeholder="Search your card"
+        onManualEntryClick={() => {
+          setShowManualInput(true);
+        }}
         onSelect={(cardId, cardName) => {
           setCurrentCard(cardId, cardName);
           setSelectedCardName(cardName);
+          setShowManualInput(false);
           setQuery('');
         }}
       />
 
+      {showManualInput ? (
+        <div className={styles.manualWrap}>
+          <input
+            className={styles.manualInput}
+            value={manualCardName}
+            onChange={(event) => setManualCardName(event.target.value)}
+            placeholder="Type your card name"
+            aria-label="Manual card name"
+          />
+          <button
+            type="button"
+            className={styles.manualButton}
+            onClick={() => {
+              if (!manualCardName.trim()) return;
+              setCurrentCard('unknown', manualCardName.trim());
+              setSelectedCardName(manualCardName.trim());
+              setShowManualInput(false);
+              setManualCardName('');
+              setQuery('');
+            }}
+          >
+            Use this card
+          </button>
+        </div>
+      ) : null}
+
       {state.currentCards.length > 0 ? (
         <div className={styles.chipWrap}>
           <div className={styles.chip}>
-            <span>{selectedCardName || state.currentCards[0]}</span>
+            <span>{state.manualCardEntry ? (state.manualCardName ?? selectedCardName) : (selectedCardName || state.currentCards[0])}</span>
             <button
               type="button"
               className={styles.clearButton}

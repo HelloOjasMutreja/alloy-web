@@ -96,7 +96,7 @@ export default function SpendCategoriesScreen() {
     >
       <p className={styles.instruction}>Pick up to 3 — order matters</p>
 
-      <div className={styles.grid}>
+      <div className={`${styles.grid} ranked-grid`}>
         {CATEGORIES.map((category, index) => {
           const rankIndex = state.spendCategories.indexOf(category.value);
           const isSelected = rankIndex >= 0;

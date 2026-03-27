@@ -8,6 +8,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 44px;
 }
 
 .sm {
@@ -59,4 +60,9 @@
 .button:disabled {
   opacity: 0.38;
   cursor: not-allowed;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--ink-100);
+  outline-offset: 2px;
 }

@@ -111,6 +111,18 @@ export default function MonthlySpendScreen() {
         >
           <div className={styles.fill} style={{ width: `${displayPercent}%` }} />
           <div className={styles.thumb} style={{ left: `${displayPercent}%` }} />
+          <button
+            type="button"
+            className={styles.thumbHitArea}
+            style={{ left: `${displayPercent}%` }}
+            aria-label="Adjust monthly spend"
+            onMouseDown={(event) => handlePointerDown(event.clientX)}
+            onTouchStart={(event) => {
+              if (event.touches[0]) {
+                handlePointerDown(event.touches[0].clientX);
+              }
+            }}
+          />
         </div>
 
         <div className={styles.labels}>

@@ -1,16 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Nav } from '../../components/layout';
+import { formatRupee } from '../../lib/format';
 import type { RecommendedCard, RecommendationResponse } from '../../types/results';
 import styles from './ResultA.module.css';
 
 interface ResultAProps {
   result: RecommendationResponse;
-}
-
-const currencyFormatter = new Intl.NumberFormat('en-IN');
-
-function formatInr(value: number) {
-  return `₹${currencyFormatter.format(value)}`;
 }
 
 function formatFeeNote(card: RecommendedCard) {
@@ -19,7 +14,7 @@ function formatFeeNote(card: RecommendedCard) {
   }
 
   const monthlyBreakEven = Math.round(card.fee_waiver_spend / 12 / 1000);
-  return `${formatInr(card.annual_fee)}/yr annual fee · pays for itself above ₹${monthlyBreakEven}K/mo`;
+  return `${formatRupee(card.annual_fee)}/yr annual fee · pays for itself above ₹${monthlyBreakEven}K/mo`;
 }
 
 function CardResult({ card, index }: { card: RecommendedCard; index: number }) {
@@ -41,7 +36,7 @@ function CardResult({ card, index }: { card: RecommendedCard; index: number }) {
         </div>
         <div>
           <div className={styles.netLabel}>NET VALUE</div>
-          <div className={styles.netValue}>{formatInr(card.net_annual_value)}</div>
+          <div className={styles.netValue}>{formatRupee(card.net_annual_value)}</div>
         </div>
       </div>
 

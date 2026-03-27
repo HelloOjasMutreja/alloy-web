@@ -92,7 +92,7 @@ export default function PriorityScreen() {
     >
       <p className={styles.instruction}>Tap to rank — first tap = highest priority</p>
 
-      <div className={styles.grid}>
+      <div className={`${styles.grid} ranked-grid`}>
         {PRIORITY_OPTIONS.map((option, index) => {
           const rankIndex = state.priorityRanking.indexOf(option.value);
           const selected = rankIndex >= 0;

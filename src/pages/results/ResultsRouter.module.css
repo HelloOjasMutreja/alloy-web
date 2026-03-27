@@ -64,3 +64,9 @@
   }
 }
 
+@media (max-width: 375px) {
+  .actions {
+    grid-template-columns: 1fr;
+  }
+}
+

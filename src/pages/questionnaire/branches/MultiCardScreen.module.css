@@ -34,10 +34,17 @@
   font-size: var(--text-md);
   line-height: 1;
   cursor: pointer;
-  padding: 0;
+  padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .clearButton:hover {
   color: var(--ink-100);
+}
+
+.clearButton:focus-visible {
+  outline: 2px solid var(--ink-100);
+  outline-offset: 2px;
 }
 

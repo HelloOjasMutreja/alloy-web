@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Nav } from '../../components/layout';
 import { RevealNumber } from '../../components/ui';
+import { formatRupee } from '../../lib/format';
 import type { RecommendedCard, RecommendationResponse } from '../../types/results';
 import styles from './ResultB.module.css';
 
@@ -8,10 +9,8 @@ interface ResultBProps {
   result: RecommendationResponse;
 }
 
-const formatter = new Intl.NumberFormat('en-IN');
-
 function inr(value: number | null) {
-  return `₹${formatter.format(value ?? 0)}`;
+  return formatRupee(value ?? 0);
 }
 
 function feeNote(card: RecommendedCard) {
@@ -19,7 +18,7 @@ function feeNote(card: RecommendedCard) {
     return 'No annual fee';
   }
   const monthlyBreakEven = Math.round(card.fee_waiver_spend / 12 / 1000);
-  return `₹${formatter.format(card.annual_fee)}/yr annual fee · pays for itself above ₹${monthlyBreakEven}K/mo`;
+  return `${formatRupee(card.annual_fee)}/yr annual fee · pays for itself above ₹${monthlyBreakEven}K/mo`;
 }
 
 function CardResult({ card, visible }: { card: RecommendedCard; visible: boolean }) {
@@ -50,7 +49,7 @@ export default function ResultB({ result }: ResultBProps) {
   const [showComparison, setShowComparison] = useState(false);
   const [showRecommendation, setShowRecommendation] = useState(false);
 
-  const isStay = result.honest_verdict === 'STAY';
+  const isStay = result.honest_verdict === 'STAY' || result.gap_sentiment === 'POSITIVE';
 
   useEffect(() => {
     const t0 = window.setTimeout(() => setShowFraming(true), 0);

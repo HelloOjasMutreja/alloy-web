@@ -6,6 +6,7 @@ export function useCardSearch() {
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState<CardSearchResult[]>([]);
   const [isSearching, setIsSearching] = useState(false);
+  const [searchError, setSearchError] = useState(false);
 
   useEffect(() => {
     const trimmed = query.trim();
@@ -17,12 +18,22 @@ export function useCardSearch() {
     let isCancelled = false;
     const timer = window.setTimeout(async () => {
       setIsSearching(true);
-      const nextResults = await api.searchCards(trimmed);
-      if (isCancelled) {
-        return;
+      setSearchError(false);
+      try {
+        const nextResults = await api.searchCards(trimmed);
+        if (isCancelled) {
+          return;
+        }
+        setSearchResults(nextResults);
+      } catch {
+        if (!isCancelled) {
+          setSearchResults([]);
+          setSearchError(true);
+        }
       }
-      setSearchResults(nextResults);
-      setIsSearching(false);
+      if (!isCancelled) {
+        setIsSearching(false);
+      }
     }, 300);
 
     return () => {
@@ -35,6 +46,6 @@ export function useCardSearch() {
   const results = isQueryActive ? searchResults : [];
   const loading = isQueryActive ? isSearching : false;
 
-  return { query, setQuery, results, loading };
+  return { query, setQuery, results, loading, searchError };
 }
 

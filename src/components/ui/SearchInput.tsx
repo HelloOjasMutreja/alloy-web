@@ -6,18 +6,22 @@ interface SearchInputProps {
   value: string;
   onChange: (value: string) => void;
   onSelect: (cardId: string, cardName: string) => void;
+  onManualEntryClick?: () => void;
   placeholder?: string;
   results: CardSearchResult[];
   loading?: boolean;
+  showError?: boolean;
 }
 
 export function SearchInput({
   value,
   onChange,
   onSelect,
+  onManualEntryClick,
   placeholder,
   results,
   loading = false,
+  showError = false,
 }: SearchInputProps) {
   const showDropdown = useMemo(() => results.length > 0 || (!loading && value.trim().length >= 2), [loading, results.length, value]);
 
@@ -28,6 +32,7 @@ export function SearchInput({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
+        aria-label={placeholder ?? 'Search'}
       />
 
       {loading ? (
@@ -51,9 +56,15 @@ export function SearchInput({
           ))}
 
           {!loading && results.length === 0 ? (
-            <div className={styles.emptyRow}>I don't see my card</div>
+            <button type="button" className={styles.row} onClick={onManualEntryClick}>
+              <div className={styles.emptyRow}>I don&apos;t see my card</div>
+            </button>
           ) : null}
         </div>
+      ) : null}
+
+      {showError ? (
+        <p className={styles.errorText}>Search unavailable — try typing the card name</p>
       ) : null}
     </div>
   );

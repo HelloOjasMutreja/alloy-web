@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { formatRupee } from '../../lib/format';
 import styles from './RevealNumber.module.css';
 
 interface RevealNumberProps {
@@ -9,19 +10,14 @@ interface RevealNumberProps {
   triggered: boolean;
 }
 
-const indianCurrencyFormatter = new Intl.NumberFormat('en-IN', {
-  maximumFractionDigits: 0,
-});
-
 export function RevealNumber({ value, label, sublabel, triggered }: RevealNumberProps) {
   const [displayValue, setDisplayValue] = useState(0);
-  const [showLabel, setShowLabel] = useState(false);
   const [showNumber, setShowNumber] = useState(false);
   const [showSubLabel, setShowSubLabel] = useState(false);
   const countFrameRef = useRef<number | null>(null);
   const timeoutRefs = useRef<number[]>([]);
 
-  const formattedValue = useMemo(() => `₹${indianCurrencyFormatter.format(displayValue)}`, [displayValue]);
+  const formattedValue = useMemo(() => formatRupee(displayValue), [displayValue]);
 
   useEffect(() => {
     if (countFrameRef.current !== null) {
@@ -31,15 +27,7 @@ export function RevealNumber({ value, label, sublabel, triggered }: RevealNumber
     timeoutRefs.current.forEach((id) => window.clearTimeout(id));
     timeoutRefs.current = [];
 
-    if (!triggered) {
-      setDisplayValue(0);
-      setShowLabel(false);
-      setShowNumber(false);
-      setShowSubLabel(false);
-      return;
-    }
-
-    setShowLabel(true);
+    if (!triggered) return;
 
     const enterNumberTimer = window.setTimeout(() => {
       setShowNumber(true);
@@ -78,12 +66,12 @@ export function RevealNumber({ value, label, sublabel, triggered }: RevealNumber
   }, [triggered, value]);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} aria-live="polite">
       {label ? (
         <motion.div
           className={styles.label}
           initial={{ opacity: 0, y: 12 }}
-          animate={showLabel ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+          animate={triggered ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
           transition={{ duration: 0.68, ease: [0.25, 0, 0, 1] }}
         >
           {label}

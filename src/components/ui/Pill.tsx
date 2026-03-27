@@ -11,6 +11,7 @@ export function Pill({ label, selected = false, onClick }: PillProps) {
     <button
       type="button"
       onClick={onClick}
+      aria-selected={selected}
       className={[styles.pill, selected ? styles.selected : ''].filter(Boolean).join(' ')}
     >
       {label}

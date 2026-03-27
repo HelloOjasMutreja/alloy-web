@@ -28,6 +28,8 @@ export interface RecommendationPayload {
   session_id: string;
   intent: QuestionnaireState['intent'];
   current_cards: string[];
+  manual_card_entry: boolean;
+  manual_card_name: string | null;
   tenure: QuestionnaireState['tenure'];
   goal: QuestionnaireState['goal'];
   priority_ranking: string[];
@@ -60,12 +62,14 @@ export interface QuestionnaireActions {
 const INITIAL_STATE: QuestionnaireState = {
   intent: null,
   currentCards: [],
+  manualCardEntry: false,
+  manualCardName: null,
   tenure: null,
   goal: null,
   priorityRanking: [],
   spendCategories: [],
   travelType: null,
-  monthlySpendBracket: 'S3',
+  monthlySpendBracket: null,
   incomeBracket: null,
   currentScreen: 'entry',
   history: [],
@@ -75,6 +79,7 @@ type Action =
   | { type: 'SET_INTENT'; payload: Intent }
   | { type: 'SET_GOAL'; payload: Goal }
   | { type: 'SET_CURRENT_CARD'; payload: string }
+  | { type: 'SET_MANUAL_CARD'; payload: string }
   | { type: 'SET_TENURE'; payload: Tenure }
   | { type: 'SET_PRIORITY_RANKING'; payload: string[] }
   | { type: 'ADD_EXISTING_CARD'; payload: string }
@@ -139,6 +144,8 @@ function reducer(state: QuestionnaireState, action: Action): QuestionnaireState 
         tenure: null,
         priorityRanking: [],
         currentCards: [],
+        manualCardEntry: false,
+        manualCardName: null,
         spendCategories: [],
         travelType: null,
         monthlySpendBracket: null,
@@ -147,7 +154,14 @@ function reducer(state: QuestionnaireState, action: Action): QuestionnaireState 
     case 'SET_GOAL':
       return { ...state, goal: action.payload };
     case 'SET_CURRENT_CARD':
-      return { ...state, currentCards: [action.payload] };
+      return { ...state, currentCards: [action.payload], manualCardEntry: false, manualCardName: null };
+    case 'SET_MANUAL_CARD':
+      return {
+        ...state,
+        currentCards: ['unknown'],
+        manualCardEntry: true,
+        manualCardName: action.payload,
+      };
     case 'SET_TENURE':
       return { ...state, tenure: action.payload };
     case 'SET_PRIORITY_RANKING':
@@ -159,6 +173,8 @@ function reducer(state: QuestionnaireState, action: Action): QuestionnaireState 
       return {
         ...state,
         currentCards: state.currentCards.filter((id) => id !== action.payload),
+        manualCardEntry: false,
+        manualCardName: null,
       };
     case 'TOGGLE_SPEND_CATEGORY': {
       const exists = state.spendCategories.includes(action.payload);
@@ -279,7 +295,10 @@ export function useQuestionnaireState(): QuestionnaireActions {
     setIntent: (intent) => dispatch({ type: 'SET_INTENT', payload: intent }),
     setGoal: (goal) => dispatch({ type: 'SET_GOAL', payload: goal }),
     setCurrentCard: (cardId, cardName) => {
-      void cardName;
+      if (cardId === 'unknown') {
+        dispatch({ type: 'SET_MANUAL_CARD', payload: cardName });
+        return;
+      }
       dispatch({ type: 'SET_CURRENT_CARD', payload: cardId });
     },
     setTenure: (tenure) => dispatch({ type: 'SET_TENURE', payload: tenure }),
@@ -314,6 +333,8 @@ export function buildPayload(state: QuestionnaireState): RecommendationPayload {
     session_id: questionnaireSessionId,
     intent: state.intent,
     current_cards: state.currentCards,
+    manual_card_entry: state.manualCardEntry,
+    manual_card_name: state.manualCardName,
     tenure: state.tenure,
     goal: state.goal,
     priority_ranking: state.priorityRanking,

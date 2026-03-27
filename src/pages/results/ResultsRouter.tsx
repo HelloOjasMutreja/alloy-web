@@ -19,6 +19,7 @@ export default function ResultsRouter() {
   const [showActions, setShowActions] = useState(false);
 
   const result = (location.state as ResultLocationState | null)?.result;
+  const hideApply = result?.result_type === 'B' && result.gap_sentiment === 'POSITIVE';
 
   useEffect(() => {
     const timer = window.setTimeout(() => setShowActions(true), 600);
@@ -54,14 +55,16 @@ export default function ResultsRouter() {
 
       <div className={[styles.actionBar, showActions ? styles.actionBarVisible : ''].filter(Boolean).join(' ')}>
         <div className={styles.actions}>
-          <Button
-            variant="primary"
-            size="md"
-            className={styles.fullWidth}
-            onClick={() => window.open(applyLink, '_blank', 'noopener,noreferrer')}
-          >
-            Apply
-          </Button>
+          {!hideApply ? (
+            <Button
+              variant="primary"
+              size="md"
+              className={styles.fullWidth}
+              onClick={() => window.open(applyLink, '_blank', 'noopener,noreferrer')}
+            >
+              Apply
+            </Button>
+          ) : null}
           <Button
             variant="ghost"
             size="md"
