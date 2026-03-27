@@ -65,7 +65,7 @@ const INITIAL_STATE: QuestionnaireState = {
   priorityRanking: [],
   spendCategories: [],
   travelType: null,
-  monthlySpendBracket: null,
+  monthlySpendBracket: 'S3',
   incomeBracket: null,
   currentScreen: 'entry',
   history: [],

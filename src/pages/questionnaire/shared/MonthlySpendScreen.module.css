@@ -1,0 +1,81 @@
+.instruction {
+  margin-top: calc(var(--space-6) * -1 + var(--space-4));
+  margin-bottom: var(--space-5);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--ink-60);
+}
+
+.value {
+  font-family: var(--font-sans);
+  font-size: var(--text-2xl);
+  font-weight: 500;
+  color: var(--ink-100);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-5);
+  transition: color 200ms ease-out, opacity 200ms ease-out, transform 200ms ease-out;
+}
+
+.sliderWrap {
+  width: 100%;
+  position: relative;
+  padding: 20px 0;
+}
+
+.track {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background: var(--surface-selected);
+  border-radius: var(--radius-full);
+}
+
+.fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--ink-100);
+  border-radius: var(--radius-full);
+}
+
+.thumb {
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, -50%);
+  background: var(--surface-card);
+  border: 1.5px solid var(--border-active);
+  border-radius: 50%;
+  box-shadow: var(--shadow-md);
+  cursor: grab;
+  transition: transform 80ms ease;
+}
+
+.thumb:active {
+  cursor: grabbing;
+}
+
+.labels {
+  margin-top: var(--space-4);
+  position: relative;
+  height: 18px;
+}
+
+.label {
+  position: absolute;
+  transform: translateX(-50%);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  color: var(--ink-40);
+  white-space: nowrap;
+  transition: color 160ms ease-out;
+}
+
+.activeLabel {
+  color: var(--ink-100);
+  font-weight: 500;
+}
+
