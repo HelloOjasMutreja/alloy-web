@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Landing from './pages/Landing';
 
 function LandingPage() {
-  return <main>Landing</main>;
+  return <Landing />;
 }
 
 function QuestionnairePage() {
