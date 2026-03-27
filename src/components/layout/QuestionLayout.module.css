@@ -17,6 +17,7 @@
   padding-right: var(--space-6);
   max-width: 480px;
   margin: 0 auto;
+  padding-bottom: 96px;
 }
 
 .question {
@@ -31,6 +32,7 @@
 
 .continueWrap {
   margin-top: var(--space-6);
+  margin-bottom: var(--space-4);
 }
 
 .continueButton {

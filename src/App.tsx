@@ -37,31 +37,17 @@ function AppNotFound() {
   );
 }
 
-function FlowShell() {
-  return (
-    <QuestionnaireProvider>
-      <FlowRouter />
-    </QuestionnaireProvider>
-  );
-}
-
-function ResultsShell() {
-  return (
-    <QuestionnaireProvider>
-      <ResultsRouter />
-    </QuestionnaireProvider>
-  );
-}
-
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/flow" element={<FlowShell />} />
-        <Route path="/results" element={<ResultsShell />} />
-        <Route path="*" element={<AppNotFound />} />
-      </Routes>
+      <QuestionnaireProvider>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/flow" element={<FlowRouter />} />
+          <Route path="/results" element={<ResultsRouter />} />
+          <Route path="*" element={<AppNotFound />} />
+        </Routes>
+      </QuestionnaireProvider>
     </BrowserRouter>
   );
 }

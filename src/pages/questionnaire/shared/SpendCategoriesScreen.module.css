@@ -13,3 +13,9 @@
   gap: var(--space-3);
 }
 
+@media (max-width: 480px) {
+  .grid {
+    margin-top: var(--space-2);
+  }
+}
+

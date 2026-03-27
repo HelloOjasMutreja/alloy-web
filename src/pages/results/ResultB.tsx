@@ -69,6 +69,17 @@ export default function ResultB({ result }: ResultBProps) {
     return "You're leaving this much on the table, every year.";
   }, [isStay]);
 
+  const currentCardName = useMemo(() => {
+    if (result.honest_verdict === 'STAY' && result.recommendations[0]?.card_name) {
+      return result.recommendations[0].card_name;
+    }
+    return 'Your current card';
+  }, [result.honest_verdict, result.recommendations]);
+
+  const alternativeName = useMemo(() => {
+    return result.recommendations[0]?.card_name ?? 'Top alternative from your profile';
+  }, [result.recommendations]);
+
   return (
     <main className={styles.page}>
       <Nav mode="landing" />
@@ -92,13 +103,13 @@ export default function ResultB({ result }: ResultBProps) {
         <div className={[styles.compare, showComparison ? styles.visible : ''].filter(Boolean).join(' ')}>
           <div className={styles.compareCol}>
             <p className={styles.compareLabel}>YOUR CARD</p>
-            <p className={styles.compareName}>Current card</p>
+            <p className={styles.compareName}>{currentCardName}</p>
             <p className={styles.compareValue}>{inr(result.current_card_value)}/yr</p>
           </div>
           <div className={styles.compareDivider} />
           <div className={styles.compareCol}>
             <p className={styles.compareLabel}>ALTERNATIVE</p>
-            <p className={styles.compareName}>{result.recommendations[0]?.card_name ?? 'Best alternative'}</p>
+            <p className={styles.compareName}>{alternativeName}</p>
             <p className={[styles.compareValue, styles.compareValueStrong].join(' ')}>
               {inr(result.best_alternative_value)}/yr
             </p>
@@ -126,4 +137,3 @@ export default function ResultB({ result }: ResultBProps) {
     </main>
   );
 }
-
