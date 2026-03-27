@@ -90,7 +90,7 @@ export default function PriorityScreen() {
       showContinue={canAdvance}
       onContinue={advance}
     >
-      <p className={styles.instruction}>Tap to rank — first tap = highest priority</p>
+      <p className={styles.instruction}>Tap to rank: first tap = highest priority</p>
 
       <div className={`${styles.grid} ranked-grid`}>
         {PRIORITY_OPTIONS.map((option, index) => {
@@ -99,7 +99,10 @@ export default function PriorityScreen() {
           const dimmed = maxReached && !selected;
 
           return (
-            <div key={option.value} className={dimmed ? styles.dimmed : undefined}>
+            <div
+              key={option.value}
+              className={[styles.tileWrap, dimmed ? styles.dimmed : ''].filter(Boolean).join(' ')}
+            >
               <Tile
                 variant="ranked"
                 icon={option.icon}
