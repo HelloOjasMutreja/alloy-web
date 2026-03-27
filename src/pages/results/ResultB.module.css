@@ -1,0 +1,198 @@
+.page {
+  background: var(--surface-page);
+  min-height: 100vh;
+}
+
+.content {
+  padding: var(--space-6);
+  max-width: 480px;
+  margin: 0 auto;
+  padding-top: 88px;
+  padding-bottom: 120px;
+}
+
+.framing {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-xl);
+  color: var(--ink-60);
+  margin-bottom: var(--space-6);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 680ms var(--ease-land), transform 680ms var(--ease-land);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.revealWrap {
+  margin-bottom: var(--space-6);
+}
+
+.compare {
+  border: 0.5px solid var(--border-rest);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  display: grid;
+  grid-template-columns: 1fr 0.5px 1fr;
+  margin-bottom: var(--space-6);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 680ms var(--ease-land), transform 680ms var(--ease-land);
+}
+
+.compareCol {
+  padding: var(--space-5);
+}
+
+.compareDivider {
+  background: var(--border-rest);
+}
+
+.compareLabel {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  margin-bottom: var(--space-2);
+}
+
+.compareName {
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--ink-100);
+  margin-bottom: var(--space-3);
+}
+
+.compareValue {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  color: var(--ink-60);
+}
+
+.compareValueStrong {
+  color: var(--ink-100);
+  font-weight: 500;
+}
+
+.sectionLabel {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-40);
+  margin-bottom: var(--space-3);
+}
+
+.card {
+  background: var(--surface-card);
+  border: 0.5px solid var(--border-rest);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 680ms var(--ease-land), transform 680ms var(--ease-land);
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.bank {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--ink-60);
+  margin-bottom: var(--space-1);
+}
+
+.name {
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--ink-100);
+}
+
+.netLabel {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--ink-40);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: right;
+  margin-bottom: var(--space-1);
+}
+
+.netValue {
+  font-family: var(--font-sans);
+  font-size: var(--text-xl);
+  font-weight: 500;
+  color: var(--ink-100);
+  text-align: right;
+}
+
+.divider {
+  border: none;
+  border-top: 0.5px solid var(--border-rest);
+  margin: var(--space-4) 0;
+}
+
+.fits {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--ink-60);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+}
+
+.noteLabel {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--ink-40);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.noteText {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--ink-60);
+  margin-bottom: var(--space-4);
+}
+
+.feeNote {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--ink-40);
+}
+
+.tips {
+  background: var(--surface-card);
+  border: 0.5px solid var(--border-rest);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 680ms var(--ease-land), transform 680ms var(--ease-land);
+}
+
+.tipList {
+  margin-left: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.tipList li {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--ink-60);
+  line-height: 1.6;
+}
+

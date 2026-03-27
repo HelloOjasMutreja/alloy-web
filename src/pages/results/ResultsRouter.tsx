@@ -1,41 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { Nav } from '../../components/layout';
 import { Button } from '../../components/ui';
 import { useQuestionnaireContext } from '../../context/useQuestionnaireContext';
 import type { RecommendationResponse } from '../../types/results';
+import ResultA from './ResultA';
+import ResultB from './ResultB';
+import ResultC from './ResultC';
 import styles from './ResultsRouter.module.css';
-
-interface ResultPageProps {
-  result: RecommendationResponse;
-}
-
-function ResultA({ result }: ResultPageProps) {
-  return (
-    <section className={styles.content}>
-      <h1 className={styles.headline}>First card recommendation</h1>
-      <p className={styles.meta}>Top match: {result.recommendations[0]?.card_name ?? 'N/A'}</p>
-    </section>
-  );
-}
-
-function ResultB({ result }: ResultPageProps) {
-  return (
-    <section className={styles.content}>
-      <h1 className={styles.headline}>Card audit result</h1>
-      <p className={styles.meta}>Top alternative: {result.recommendations[0]?.card_name ?? 'N/A'}</p>
-    </section>
-  );
-}
-
-function ResultC({ result }: ResultPageProps) {
-  return (
-    <section className={styles.content}>
-      <h1 className={styles.headline}>Stack optimisation result</h1>
-      <p className={styles.meta}>Top addition: {result.recommendations[0]?.card_name ?? 'N/A'}</p>
-    </section>
-  );
-}
 
 type ResultLocationState = {
   result?: RecommendationResponse;
@@ -79,7 +50,6 @@ export default function ResultsRouter() {
 
   return (
     <main className={styles.page}>
-      <Nav mode="landing" />
       {renderResult()}
 
       <div className={[styles.actionBar, showActions ? styles.actionBarVisible : ''].filter(Boolean).join(' ')}>
