@@ -1,0 +1,15 @@
+.instruction {
+  margin-top: calc(var(--space-6) * -1 + var(--space-4));
+  margin-bottom: var(--space-5);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--ink-60);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+

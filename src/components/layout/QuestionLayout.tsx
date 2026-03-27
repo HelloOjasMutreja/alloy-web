@@ -7,13 +7,15 @@ import styles from './QuestionLayout.module.css';
 
 interface QuestionLayoutProps {
   question: string;
-  onBack: () => void;
+  onBack?: () => void;
   progress: number;
   children: ReactNode;
   showContinue?: boolean;
   onContinue?: () => void;
   continueLabel?: string;
   isLoading?: boolean;
+  showBack?: boolean;
+  showProgress?: boolean;
 }
 
 export function QuestionLayout({
@@ -25,12 +27,14 @@ export function QuestionLayout({
   onContinue,
   continueLabel = 'Continue →',
   isLoading = false,
+  showBack = true,
+  showProgress = true,
 }: QuestionLayoutProps) {
   const { style } = useAnimationEntry(0);
 
   return (
     <div className={styles.page}>
-      <Nav mode="flow" onBack={onBack} progress={progress} />
+      <Nav mode="flow" onBack={onBack} progress={progress} showBack={showBack} showProgress={showProgress} />
 
       <main className={styles.content}>
         <h1 className={styles.question} style={style}>
