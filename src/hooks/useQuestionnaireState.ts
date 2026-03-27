@@ -91,7 +91,8 @@ const shouldShowTravelStep = (state: QuestionnaireState): boolean => {
   return (
     state.spendCategories.includes('TRAVEL') ||
     state.goal === 'TRAVEL' ||
-    state.priorityRanking[0] === 'TRAVEL'
+    state.priorityRanking[0] === 'TRAVEL' ||
+    state.priorityRanking[0] === 'TRAVEL_PERKS'
   );
 };
 

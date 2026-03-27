@@ -1,0 +1,43 @@
+.instruction {
+  margin-top: calc(var(--space-6) * -1 + var(--space-4));
+  margin-bottom: var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--ink-60);
+}
+
+.chipWrap {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--surface-selected);
+  border: 0.5px solid var(--border-active);
+  border-radius: var(--radius-full);
+  padding: 8px 13px;
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--ink-100);
+}
+
+.clearButton {
+  border: none;
+  background: transparent;
+  color: var(--ink-60);
+  font-size: var(--text-md);
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
+.clearButton:hover {
+  color: var(--ink-100);
+}
+

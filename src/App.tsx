@@ -1,7 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useQuestionnaireContext } from './context/QuestionnaireContext';
 import Landing from './pages/Landing';
+import CardSearchScreen from './pages/questionnaire/branches/CardSearchScreen';
 import GoalScreen from './pages/questionnaire/branches/GoalScreen';
+import MultiCardScreen from './pages/questionnaire/branches/MultiCardScreen';
+import PriorityScreen from './pages/questionnaire/branches/PriorityScreen';
+import TenureScreen from './pages/questionnaire/branches/TenureScreen';
 import EntryGate from './pages/questionnaire/EntryGate';
 import SpendCategoriesScreen from './pages/questionnaire/shared/SpendCategoriesScreen';
 
@@ -17,6 +21,14 @@ function QuestionnairePage() {
       return <EntryGate />;
     case 'goal':
       return <GoalScreen />;
+    case 'card-search':
+      return <CardSearchScreen />;
+    case 'tenure':
+      return <TenureScreen />;
+    case 'priority':
+      return <PriorityScreen />;
+    case 'multi-card':
+      return <MultiCardScreen />;
     case 'spend-categories':
       return <SpendCategoriesScreen />;
     default:
