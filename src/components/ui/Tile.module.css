@@ -1,0 +1,107 @@
+.tile {
+  background: var(--surface-card);
+  border: 0.5px solid var(--border-rest);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition:
+    border-color 160ms ease-out,
+    background 160ms ease-out,
+    transform 160ms ease-out,
+    box-shadow 160ms ease-out;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: tileEnter var(--dur-enter) var(--ease-land) forwards;
+}
+
+.tile:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.selected {
+  background: var(--surface-selected);
+  border-color: var(--border-active);
+  transform: none;
+  box-shadow: none;
+}
+
+.selected:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--border-active);
+}
+
+.icon,
+.ranked {
+  padding: var(--space-5);
+}
+
+.tapCard {
+  padding: var(--space-4) var(--space-5);
+  min-height: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.iconWrap {
+  width: 24px;
+  height: 24px;
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--ink-100);
+}
+
+.sublabel {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--ink-60);
+}
+
+.iconSubLabel {
+  margin-top: 3px;
+}
+
+.tapSubLabel {
+  margin-top: var(--space-1);
+}
+
+.badge {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ink-100);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes tileEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

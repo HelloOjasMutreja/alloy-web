@@ -1,0 +1,19 @@
+.card {
+  background: var(--surface-card);
+  border: 0.5px solid var(--border-rest);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.paddingSm {
+  padding: var(--space-4);
+}
+
+.paddingMd {
+  padding: var(--space-5);
+}
+
+.paddingLg {
+  padding: var(--space-6);
+}

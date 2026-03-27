@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Surfaces */
+  --surface-page:     #F9F8F5;
+  --surface-card:     #FFFFFF;
+  --surface-selected: #EDECE7;
+  --surface-elevated: #F4F3EF;
+
+  /* Ink */
+  --ink-100: #1A1916;
+  --ink-60:  #7C7B73;
+  --ink-40:  #AEADA8;
+
+  /* Borders */
+  --border-rest:   rgba(26,25,22,0.11);
+  --border-hover:  rgba(26,25,22,0.25);
+  --border-active: rgba(26,25,22,0.36);
+
+  /* Accents — result screens only, never in flow UI */
+  --accent-warm:  #E8DDD0;
+  --accent-cool:  #D8DFE8;
+  --accent-moss:  #D4DDD4;
+  --accent-amber: #E8E0CC;
+
+  /* Semantic — result screens only */
+  --semantic-positive: #C8D8C4;
+  --semantic-neutral:  #E0DDD8;
+  --semantic-signal:   #DDD4C4;
+
+  /* Spacing — Fibonacci */
+  --space-1: 3px;
+  --space-2: 5px;
+  --space-3: 8px;
+  --space-4: 13px;
+  --space-5: 21px;
+  --space-6: 34px;
+  --space-7: 55px;
+  --space-8: 89px;
+  --space-9: 144px;
+
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans:  'DM Sans', system-ui, sans-serif;
+
+  --text-xs:   10px;
+  --text-sm:   11.5px;
+  --text-md:   13.5px;
+  --text-base: 16.18px;
+  --text-lg:   21px;
+  --text-xl:   26.18px;
+  --text-2xl:  30px;
+  --text-3xl:  42.33px;
+  --text-4xl:  68.47px;
+
+  /* Radius */
+  --radius-xs:   3px;
+  --radius-sm:   5px;
+  --radius-md:   8px;
+  --radius-lg:   13px;
+  --radius-xl:   21px;
+  --radius-2xl:  34px;
+  --radius-full: 9999px;
+
+  /* Shadows — warm tinted, no cold greys */
+  --shadow-xs: 0 1px 2px rgba(26,25,22,0.04);
+  --shadow-sm: 0 1px 4px rgba(26,25,22,0.05), 0 1px 2px rgba(26,25,22,0.04);
+  --shadow-md: 0 4px 13px rgba(26,25,22,0.06), 0 1px 3px rgba(26,25,22,0.04);
+  --shadow-lg: 0 8px 21px rgba(26,25,22,0.07), 0 2px 6px rgba(26,25,22,0.04);
+
+  /* Motion */
+  --ease-land: cubic-bezier(0.25, 0, 0, 1);
+  --ease-exit: ease-in;
+  --dur-fast:   160ms;
+  --dur-normal: 250ms;
+  --dur-enter:  680ms;
+  --dur-settle: 800ms;
+  --stagger:    80ms;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  background: var(--surface-page);
+  color: var(--ink-100);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

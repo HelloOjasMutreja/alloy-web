@@ -1,0 +1,23 @@
+.pill {
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  border-radius: var(--radius-full);
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 160ms ease-out;
+  background: var(--surface-card);
+  border: 0.5px solid var(--border-rest);
+  color: var(--ink-60);
+}
+
+.pill:hover {
+  border-color: var(--border-hover);
+  color: var(--ink-100);
+}
+
+.selected {
+  background: var(--surface-selected);
+  border-color: var(--border-active);
+  color: var(--ink-100);
+  font-weight: 500;
+}

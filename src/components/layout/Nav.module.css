@@ -1,0 +1,47 @@
+.navWrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55px;
+  background: rgba(249, 248, 245, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--border-rest);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-base);
+  color: var(--ink-100);
+}
+
+.flowLogo {
+  opacity: 0.6;
+}
+
+.backButton {
+  position: absolute;
+  left: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--ink-100);
+  opacity: 0.28;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 160ms ease;
+}
+
+.backButton:hover {
+  opacity: 0.6;
+}
